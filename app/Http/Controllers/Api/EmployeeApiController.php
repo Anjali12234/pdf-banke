@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Employee\StoreEmployeeRequest;
+use App\Http\Requests\Employee\UpdateEmployeeRequest;
 use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
 use Illuminate\Http\Request;
@@ -28,22 +29,23 @@ class EmployeeApiController extends Controller
     
     public function show(Employee $employee)
     {
-        //
+        return response()->json(['employee' => $employee]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Employee $employee)
+   
+    public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
-        //
+        $employee->update($request->all());
+        return new EmployeeResource($employee);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+   
     public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        return response()->json([
+            'message' => 'deleted successfully',
+            'status' => 'success'
+        ]);
     }
 }
