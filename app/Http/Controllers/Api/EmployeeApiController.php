@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Employee\StoreEmployeeRequest;
+use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
@@ -17,9 +19,10 @@ class EmployeeApiController extends Controller
     }
 
    
-    public function store(Request $request)
+    public function store(StoreEmployeeRequest $request)
     {
-        
+       $employee = Employee::create($request->all());
+        return new EmployeeResource($employee);
     }
 
     
