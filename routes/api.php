@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\DepartmentApiController;
+use App\Http\Controllers\Api\EmployeeApiController;
 use App\Http\Controllers\Api\LinkApiController;
 use App\Http\Controllers\Api\SliderController;
 use App\Http\Controllers\Api\UserResourceController;
@@ -34,3 +36,5 @@ Route::get('/user', function () {
 });
 Route::apiResource('slider',SliderController::class);
 Route::apiResource('link',LinkApiController::class);
+Route::apiResource('department',DepartmentApiController::class);
+Route::apiResource('employee',EmployeeApiController::class);

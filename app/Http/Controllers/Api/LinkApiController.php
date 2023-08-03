@@ -22,8 +22,8 @@ class LinkApiController extends Controller
 
     public function store(Request $request)
     {
-         $link  = Link::create($request->all());
-         return new LinkResource('link'); 
+        $link = Link::create($request->all());
+        return new LinkResource($link);
     }
 
 
@@ -35,12 +35,17 @@ class LinkApiController extends Controller
 
     public function update(Request $request, Link $link)
     {
-        //
+        $link->update($request->all());
+        return new LinkResource($link);
     }
 
 
     public function destroy(Link $link)
     {
-        //
+        $link->delete();
+        return response()->json([
+            'message' => 'deleted',
+            'status' => 'success'
+        ]);
     }
 }
