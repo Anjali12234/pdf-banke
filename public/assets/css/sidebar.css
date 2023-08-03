@@ -1,0 +1,35 @@
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 220px;
+    z-index: 9999;
+    overflow-y: auto;
+}
+
+.sidebar-scroll {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.side-menu {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.toggle-btn {
+    position: fixed;
+    padding: 10px 15px;
+    color:black;
+    border: none;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    #sidebar {
+      width: 100px;
+    }
+  }
+
