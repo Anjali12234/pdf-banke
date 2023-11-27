@@ -12,6 +12,7 @@ class DownloadListResource extends JsonResource
     {
         return [
             'title' => $this->title,
+            'id' => $this->id,
             'english_title' => $this->english_title,
             'files' =>$this->files,
             'slug' => $this->slug,
@@ -19,7 +20,10 @@ class DownloadListResource extends JsonResource
             'publisher' => $this->publisher,
             'english_publisher' => $this->english_publisher,
             'publish_date' => $this->publish_date,
-            'status' => $this->status
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'deleted_at' => $this->deleted_at,
         ];
     }
 }

@@ -25,6 +25,10 @@ class SliderController extends Controller
         return new SliderResource($slider);
     }
 
+    public function show(Slider $slider)
+    {
+        return response()->json(['slider'=>$slider]);
+    }
     
  
     public function update(UpdateSliderRequest $request, Slider $slider)
@@ -37,6 +41,9 @@ class SliderController extends Controller
     public function destroy(Slider $slider)
     {
         $slider->delete();
-        return response(null, 204);
+        return response()->json([
+            'message' => 'deleted successfully',
+            'status' => 'success'
+        ]);
     }
 }

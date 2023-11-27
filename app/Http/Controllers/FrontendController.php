@@ -17,7 +17,8 @@ use App\Models\NewsList;
 use App\Models\OfficeDetail;
 use App\Models\Photo;
 use App\Models\Slider;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class FrontendController extends Controller
 {
@@ -36,7 +37,7 @@ class FrontendController extends Controller
             $query->take(5);
         }])->get();
 
-        return view('frontend.index', compact('sliders', 'employees', 'photos', 'documentCategories', 'newsCategories', 'introduction', 'farmerCategories','farmerCategories1'));
+        return view('frontend.index',compact('sliders', 'employees', 'photos', 'documentCategories', 'newsCategories', 'introduction', 'farmerCategories','farmerCategories1'));
     }
 
     public function employeeDetail()
@@ -126,4 +127,6 @@ class FrontendController extends Controller
     {
         return view('frontend.officeDetail', compact('officeDetail'));
     }
+
+   
 }

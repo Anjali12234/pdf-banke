@@ -18,7 +18,7 @@ class UpdateDocumentCategory extends FormRequest
             'title' => ['required'],
             'english_title' => ['nullable'],
             'position' => ['nullable'],
-            'slug' => ['required', 'alpha_dash', Rule::unique('document_categories', 'slug')->ignore($this->documentCategory)],
+            'slug' => ['nullable', 'alpha_dash', Rule::unique('document_categories', 'slug')->ignore($this->documentCategory)],
             'status' => ['nullable'],
         ];
     }

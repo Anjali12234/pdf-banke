@@ -26,6 +26,7 @@
                 @foreach ($documentList->files as $file)
                     <div class="col-md-8 mb-5"> 
                         <div class="news-iframe" >
+                            
                             <iframe src="{{ $file->file_url }}" height="600px" width="100%"></iframe>
                         </div>
                     </div>

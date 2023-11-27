@@ -12,43 +12,43 @@
                     <li class="nav-item dropdown bg-primary mt-1">
                         <a class="nav-link navbar-brand active dropdown-toggle bg-primary text-white" href="#"
                             id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            हाम्रो बारेमा
+                            {{ __('Our Introduction') }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li class="bg-white" style="text-align: center">
                                 <a class="dropdown-item"
                                     href="{{ route('officeDetail', App\Enums\OfficeDetailTypeEnum::INTRODUCTION, 'introduction') }}">
-                                    परिचय
+                                    {{ __('Introduction') }}
                                 </a>
                             </li>
 
                             <li class="bg-white" style="text-align: center">
                                 <a class="dropdown-item"
                                     href="{{ route('officeDetail', App\Enums\OfficeDetailTypeEnum::PURPOSE, 'purpose') }}">
-                                    उद्देश्य
+                                    {{ __('Purpose') }}
                                 </a>
                             </li>
                             <li class="bg-white" style="text-align: center">
                                 <a class="dropdown-item"
                                     href="{{ route('officeDetail', App\Enums\OfficeDetailTypeEnum::WORK_DESCRIPTION, 'work_description') }}">
-                                    कार्य विवरण
+                                    {{ __('Work Description') }}
                                 </a>
                             </li>
                             <li class="bg-white" style="text-align: center">
                                 <a class="dropdown-item"
                                     href="{{ route('officeDetail', App\Enums\OfficeDetailTypeEnum::ORGANIZATIONAL_STRUCTURE, 'organizational_structure') }}">
-                                    संगठन संरचना
+                                    {{ __('Organizational Structure') }}
                                 </a>
                             </li>
                             <li class="bg-white" style="text-align: center">
                                 <a class="dropdown-item"
                                     href="{{ route('officeDetail', App\Enums\OfficeDetailTypeEnum::CITIZEN_CHARTER, 'citizen_charter') }}">
-                                    नागरिक वडापत्र
+                                    {{ __('Citizen Charter') }}
                                 </a>
                             </li>
                             <li class="bg-white" style="text-align: center">
                                 <a class="dropdown-item" href="{{ route('emplDetail') }}">
-                                    कर्मचारी विवरण
+                                    {{ __('Employee Details') }}
                                 </a>
                             </li>
                         </ul>
@@ -56,12 +56,18 @@
                     <li class="nav-item dropdown bg-primary mt-1">
                         <a class="nav-link navbar-brand active dropdown-toggle bg-primary text-white" href="#"
                             id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            सूचना/समाचारहरु
+                            {{ __('News/Notice') }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @foreach (newsCategorys() as $newsCategory)
                                 <li class="bg-white" style="text-align: center"><a class="dropdown-item"
-                                        href="{{ route('newsCategory', $newsCategory) }}">{{ $newsCategory->title }}</a>
+                                        href="{{ route('newsCategory', $newsCategory) }}">
+                                        @if (App::getLocale() === 'en')
+                                            {{ $newsCategory->english_title ?? '' }}
+                                        @elseif (App::getLocale() === 'ne')
+                                            {{ $newsCategory->title ?? '' }}
+                                        @endif
+                                    </a>
                                 </li>
                             @endforeach
                         </ul>
@@ -69,34 +75,39 @@
                     <li class="nav-item dropdown bg-primary mt-1">
                         <a class="nav-link navbar-brand active dropdown-toggle bg-primary text-white" href="#"
                             id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            डाउनलोड
+                            {{ __('Download') }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @foreach (downloadCategorys() as $downloadCategory)
-                                <li class="bg-white" style="text-align: center"><a class="dropdown-item"
-                                        href="{{ route('downloadCategory', $downloadCategory) }}">{{ $downloadCategory->title }}</a>
+                                <li class="bg-white" style="text-align: center">
+                                    <a class="dropdown-item"
+                                        href="{{ route('downloadCategory', $downloadCategory) }}">
+                                        @if (App::getLocale() === 'en')
+                                            {{ $downloadCategory->english_title }}
+                                        @elseif (App::getLocale() === 'ne')
+                                            {{ $downloadCategory->title }}
+                                        @endif
+                                    </a>
                                 </li>
                             @endforeach
                         </ul>
                     </li>
 
                     <li class="nav-item bg-primary mt-2">
-                        <a class=" bg-primary navbar-brand active text-white " href="{{ route('link') }}">लिंकहरु</a>
+                        <a class=" bg-primary navbar-brand active text-white " href="{{ route('link') }}">{{ __("Links") }}</a>
                     </li>
                     <li class="nav-item dropdown bg-primary mt-1">
                         <a class="nav-link navbar-brand active dropdown-toggle bg-primary text-white" href="#"
                             id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            ग्यालरी
+                            {{ __("Gallery") }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li class="bg-white" style="text-align: center"><a class="dropdown-item"
-                                    href="{{ route('photoGallery') }}">फोटो ग्यालरी</a></li>
-                            <li class="bg-white " style="text-align: center"><a class="dropdown-item"
-                                    href="{{ url('videoGallery') }}">भिडियो ग्यालरी</a></li>
+                                    href="{{ route('photoGallery') }}">{{ __("Photo Gallery") }}</a></li>
                         </ul>
                     </li>
                     <li class="nav-item bg-primary mt-2">
-                        <a class=" bg-primary navbar-brand active text-white" href="{{ route('contact') }}">सम्पर्क</a>
+                        <a class=" bg-primary navbar-brand active text-white" href="{{ route('contact') }}">{{ __("Contact") }}</a>
                     </li>
 
                 </ul>

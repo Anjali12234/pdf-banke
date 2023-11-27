@@ -22,7 +22,8 @@ class StoreDocumentList extends FormRequest
             'slug' => ['required', 'alpha_dash', Rule::unique('document_lists', 'slug')],
             'files' => ['required', 'array'],
             'files.*' => ['mimes:png,jpg,jpeg,pdf,jfif'],
-            'document_lists' => ['required'],
+            'document_category_id' => ['required'],
+
             'publisher' => ['required'],
             'english_publisher' => ['required'],
             'publish_date' => ['required'], 

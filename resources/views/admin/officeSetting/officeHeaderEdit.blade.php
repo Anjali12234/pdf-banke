@@ -25,39 +25,71 @@
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-                            <div id="office-header">
-                                <div class="row">
-                                    <div class="col-sm-6 form-group">
-                                        <label for="title">नाम *</label>
-                                        <input class="form-control" id="title" type="text"
-                                            name="title">
-                                        <span class="text-warning">
-                                            @error('title')
-                                                {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </div>
-                                    <div class="col-sm-6 form-group">
-                                        <label for="english_title">English*</label>
-                                        <input class="form-control" type="text" id="english_title"
-                                            name="english_title">
-                                        <span class="text-warning">
-                                            @error('english_title')
-                                                {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </div>
+                            <div id="office-header" class="row">
+                                <div class="col-sm-3 form-group">
+                                    <label for="title">नाम *</label>
+                                    <input class="form-control" id="title" type="text"
+                                        value="{{ old('title', $officeHeader->title) }}" name="title">
+                                    <span class="text-warning">
+                                        @error('title')
+                                            {{ $message }}
+                                        @enderror
+                                    </span>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-6 form-group">
-                                        <label for="position">Position *</label>
-                                        <input class="form-control" type="text" name="position">
-                                        <span class="text-warning">
-                                            @error('position')
-                                                {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </div>
+                                <div class="col-sm-3 form-group">
+                                    <label for="english_title">English*</label>
+                                    <input class="form-control" type="text" id="english_title"
+                                        value="{{ old('english_title', $officeHeader->english_title) }}"
+                                        name="english_title">
+                                    <span class="text-warning">
+                                        @error('english_title')
+                                            {{ $message }}
+                                        @enderror
+                                    </span>
+                                </div>
+                                <div class="col-sm-3 form-group">
+                                    <label for="position">Position *</label>
+                                    <input class="form-control" type="text" name="position"
+                                        value="{{ old('position', $officeHeader->position) }}">
+                                    <span class="text-warning">
+                                        @error('position')
+                                            {{ $message }}
+                                        @enderror
+                                    </span>
+                                </div>
+                                <div class="col-sm-3 form-group">
+                                    <label for="font_size">Font Size</label>
+                                    <input type="number" class="form-control" name="font_size"
+                                        value="{{ old('font_size', $officeHeader->font_size) }}">
+                                    <span class="text-warning">
+                                        @error('font_size')
+                                            {{ $message }}
+                                        @enderror
+                                    </span>
+                                </div>
+                                <div class="col-sm-3 form-group">
+                                    <label for="font-color">Font Color</label>
+                                    <input type="color" class="form-control" name="font_color"
+                                        value="{{ old('font_color', $officeHeader->font_color) }}">
+                                    <span class="text-warning">
+                                        @error('font_color')
+                                            {{ $message }}
+                                        @enderror
+                                    </span>
+                                </div>
+                                <div class="col-sm-3 form-group">
+                                    <label for="font-family">Font Family</label>
+                                    <select class="form-control" name="font_family"
+                                        value="{{ old('font_family', $officeHeader->font_family) }}">
+                                        <option>--Select font family--</option>
+                                        <option value="Arial">Arial</option>
+                                        <option value="Times New Roman">Times New Roman</option>
+                                    </select>
+                                    <span class="text-warning">
+                                        @error('font_family')
+                                            {{ $message }}
+                                        @enderror
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -69,4 +101,4 @@
 
             </div>
         </div>
-@endsection
+    @endsection

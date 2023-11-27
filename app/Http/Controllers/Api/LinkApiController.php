@@ -9,16 +9,12 @@ use Illuminate\Http\Request;
 
 class LinkApiController extends Controller
 {
-
     public function index()
-
     {
         return response()->json([
             'link' => Link::get()
         ]);
     }
-
-
 
     public function store(Request $request)
     {
@@ -26,19 +22,16 @@ class LinkApiController extends Controller
         return new LinkResource($link);
     }
 
-
     public function show(Link $link)
     {
         return response()->json(['link'=>$link]);
     }
-
 
     public function update(Request $request, Link $link)
     {
         $link->update($request->all());
         return new LinkResource($link);
     }
-
 
     public function destroy(Link $link)
     {

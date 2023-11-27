@@ -18,7 +18,7 @@ class UpdateDownloadListRequest extends FormRequest
         return [
             'title' => ['required'],
             'english_title' => ['required'],
-            'slug' => ['required', 'alpha_dash', Rule::unique('download_lists', 'slug')->ignore($this->downloadList)],
+            'slug' => ['nullable', 'alpha_dash', Rule::unique('download_lists', 'slug')->ignore($this->downloadList)],
             'files' => ['nullable', 'array'],
             'files.*' => ['mimes:png,jpg,jpeg,pdf'],
             'download_category_id' =>  ['required'],

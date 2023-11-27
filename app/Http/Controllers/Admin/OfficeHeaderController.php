@@ -10,25 +10,10 @@ use Illuminate\Http\Request;
 
 class OfficeHeaderController extends Controller
 {   
-
-
-    public function store(StoreOfficeHeaderRequest $request)
-    {
-        $inputs = $request->input('addMoreInputFields');
-
-        foreach ($inputs as $input) {
-            OfficeHeader::create($input);
-        }
-        toast('OfficeHeader addedd Successfully', 'success');
-        return redirect(route('admin.officesetting.index'));
-    }
-
-
-    public function edit(OfficeHeader $officeHeader)
+       public function edit(OfficeHeader $officeHeader)
     {
         return view('admin.officeSetting.officeHeaderEdit',compact('officeHeader'));
     }
-
 
     public function update(UpdateOfficeHeaderRequest $request, OfficeHeader $officeHeader)
     {
@@ -36,7 +21,6 @@ class OfficeHeaderController extends Controller
         toast('OfficeHeader updated successfully','success');
         return redirect(route('admin.officesetting.index'));
     }
-
 
     public function destroy(OfficeHeader $officeHeader)
     {

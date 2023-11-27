@@ -3,22 +3,22 @@
     <div class="content-wrapper">
         <!-- START PAGE CONTENT-->
         <div class="page-content fade-in-up">
-            <h2>ड्यासबोर्ड</h2>
+            <h2>{{ __("Dashboard") }}</h2>
 
             <div class="row mt-5">
                 <div class="col-lg-3 col-md-6">
                     <div class="ibox bg-success color-white widget-stat">
                         <div class="ibox-body">
                             <h2 class="m-b-5 font-strong">{{ $slider_count }}</h2>
-                            <div class="m-b-5">Slider</div><i class="ti-shopping-cart widget-stat-icon"></i>
+                            <div class="m-b-5">{{ __("Slider") }}</div><i class="ti-shopping-cart widget-stat-icon"></i>
                         </div>
                     </div>
-                </div>
+                </div>  
                 <div class="col-lg-3 col-md-6">
                     <div class="ibox bg-info color-white widget-stat">
                         <div class="ibox-body">
                             <h2 class="m-b-5 font-strong">{{ $employee_count }}</h2>
-                            <div class="m-b-5">Employee</div><i class="ti-bar-chart widget-stat-icon"></i>
+                            <div class="m-b-5">{{ __("Employee") }}</div><i class="ti-bar-chart widget-stat-icon"></i>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                     <div class="ibox bg-warning color-white widget-stat">
                         <div class="ibox-body">
                             <h2 class="m-b-5 font-strong">{{ $downloads_count }}</h2>
-                            <div class="m-b-5">Download List</div><i class="fa fa-money widget-stat-icon"></i>
+                            <div class="m-b-5">{{ __("Download List") }}</div><i class="fa fa-money widget-stat-icon"></i>
                         </div>
                     </div>
                 </div>
@@ -49,18 +49,13 @@
                     <div class="wrapper">
                         <div class="chart-wrapper">
                             <div class="progress-wrapper">
-                                <h2>Bar Diagram </h2>
+                                <h2>{{ __("Bar Diagram") }} </h2>
                                 <canvas id="myChart"></canvas>
                             </div>
                         </div>
-
-
-
                     </div>
                 </div>
             </div>
-
-
         </div>
         @push('script')
             <script src="{{ asset('assets/js/scripts/chartjs_demo.js') }}" type="text/javascript"></script>
@@ -71,8 +66,6 @@
                     const sidebar = document.getElementById('sidebar');
                     sidebar.idList.toggle('show');
                 }
-
-
                 let chartValues = {{ json_encode($chartData->values()) }};
                 var labels = {!! json_encode($chartData->keys()) !!}.map(function(label) {
                     var parser = new DOMParser();

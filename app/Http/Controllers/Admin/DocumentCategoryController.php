@@ -21,7 +21,7 @@ class DocumentCategoryController extends Controller
     {
 
         DocumentCategory::create($request->validated());
-        toast('Document Category added successfully ', 'success');
+        toast( __('Document Category added successfully'), 'success');
         return back();
     }
 
@@ -34,7 +34,7 @@ class DocumentCategoryController extends Controller
     public function update(UpdateDocumentCategory $request, DocumentCategory $documentCategory)
     {
         $documentCategory->update($request->validated());
-        toast('Category added successfully ', 'success');
+        toast( __('Category added successfully'), 'success');
         return redirect(route('admin.documentCategory.index'));
     }
 
@@ -42,7 +42,7 @@ class DocumentCategoryController extends Controller
     public function destroy(DocumentCategory $documentCategory)
     {
         $documentCategory->delete();
-        toast('Category deleted successfully', 'success');
+        toast( __('Category deleted successfully'), 'success');
         return   back();
     }
 
@@ -52,7 +52,7 @@ class DocumentCategoryController extends Controller
             'status' => !$documentCategory->status
         ]);
 
-        toast('Status updated successfully', 'success');
+        toast( __('Status updated successfully'), 'success');
         return back();
     }
 }

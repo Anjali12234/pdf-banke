@@ -17,8 +17,8 @@ class UpdateDownloadCategoryRequest extends FormRequest
         return [
             'title' => ['required'],
             'english_title' => ['nullable'],
-            'position' => ['required'],
-            'slug' => ['required', 'alpha_dash', Rule::unique('document_categories', 'slug')->ignore($this->downloadCategory)],
+            'position' => ['nullable'],
+            'slug' => ['nullable', 'alpha_dash', Rule::unique('document_categories', 'slug')->ignore($this->downloadCategory)],
             'status' => ['nullable'],
         ];
     }

@@ -3,19 +3,26 @@
 @section('main-container')
     @include('frontend.layouts.news')
 
+
     <section class="container-fluid">
         <div class="row  information">
             <div class="col-md-3 information-detail">
 
-                <h5 class="headings"> <strong> किसान सूचना केन्द्र</strong></h5>
-                    @foreach ($farmerCategories1->first()->farmerLists as $farmerList)
-                        <div class="heading-detail bg-white p-1  mt-2 ">
-                            <a class="" href="">
-                                <h6 class="px-2 bg-white mt-1  ">{{ $farmerList->title ?? '' }}</h6>
-                                <p class=" my-1 px-2 bg-white">{{ $farmerList->publish_date ?? '' }}| PDF</p>
-                            </a>
-                        </div>
-                    @endforeach
+                <h5 class="headings"> <strong> {{ __('Farmer Information Centre') }}</strong></h5>
+                @foreach ($farmerCategories1->first()->farmerLists as $farmerList)
+                    <div class="heading-detail bg-white p-1  mt-2 ">
+                        <a class="" href="">
+                            <h6 class="px-2 bg-white mt-1  ">
+                                @if (App::getLocale() === 'en')
+                                    {{ $farmerList->english_title ?? '' }}
+                                @elseif (App::getLocale() === 'ne')
+                                    {{ $farmerList->title ?? '' }}
+                                @endif
+                            </h6>
+                            <p class=" my-1 px-2 bg-white">{{ $farmerList->publish_date ?? '' }}| PDF</p>
+                        </a>
+                    </div>
+                @endforeach
 
             </div>
             <div class="col-md-6 mt-3" class="slider">
@@ -33,7 +40,13 @@
                                 <img src="{{ $slider->image_url }}" class="d-block w-100 height-455"
                                     alt="खजुरा साकिनी क्रस  जातका कुखुराहरु">
                                 <div class="carousel-caption d-none d-md-block bg-transparent">
-                                    <p class="bg-transparent text-white">{{ $slider->title }}</p>
+                                    <p class="bg-transparent text-white">
+                                        @if (App::getLocale() === 'en')
+                                            {{ $slider->english_title ?? '' }}
+                                        @elseif (App::getLocale() === 'ne')
+                                            {{ $slider->title ?? '' }}
+                                        @endif
+                                    </p>
                                 </div>
                             </div>
                         @endforeach
@@ -59,10 +72,15 @@
                         <div class="officer-detail ">
                             <h5> <strong>{{ officeSetting()->officeChiefId->name ?? '' }}</strong>
                             </h5>
-                            <p>{{ officeSetting()->officeChiefId->department->title ?? '' }}</p>
-                            <p><i class="fa fa-phone"></i> {{ officeSetting()->officeChiefId->phone ?? '' }}</p>
-                            <p><i class="fa fa-envelope"></i> {{ officeSetting()->officeChiefId->email ?? '' }}
+                            <p>
+                                @if (App::getLocale() === 'en')
+                                    {{ officeSetting()->officeChiefId->department->english_title ?? '' }}
+                                @elseif (App::getLocale() === 'ne')
+                                    {{ officeSetting()->officeChiefId->department->title ?? '' }}
+                                @endif
                             </p>
+                            <p><i class="fa fa-phone"></i> {{ officeSetting()->officeChiefId->phone ?? '' }}</p>
+                            <p><i class="fa fa-envelope"></i> {{ officeSetting()->officeChiefId->email ?? '' }}</p>
                         </div>
                     </div>
                     <hr style="width:80%; margin-left: 40px;">
@@ -74,7 +92,13 @@
                         <div class="officer-detail  ">
                             <h5> <strong>{{ officeSetting()->informationOfficerId->name ?? '' }}</strong>
                             </h5>
-                            <p>{{ officeSetting()->informationOfficerId->department->title ?? '' }}</p>
+                            <p>
+                                @if (App::getLocale() === 'en')
+                                    {{ officeSetting()->informationOfficerId->department->english_title ?? '' }}
+                                @elseif (App::getLocale() === 'ne')
+                                    {{ officeSetting()->informationOfficerId->department->title ?? '' }}
+                                @endif
+                            </p>
                             <p><i class="fa fa-phone "></i>
                                 {{ officeSetting()->informationOfficerId->phone ?? '' }}
                             </p>
@@ -99,18 +123,29 @@
     <section class="container-fluid">
         <div class="row">
             <div class="col-md-7 bg-white block-information">
-                <h6 style="color:blue; background-color:white; margin-top:10px;"> <strong class="bg-white">
-                        {{ $introduction->title ?? '' }}</strong></h6>
-                <p style="">
-                    <span style="background-color: white;">
-                        {!! Str::words($introduction->description ?? '', 150, '..') !!}
-                    </span>
-                </p>
+                @if (App::getLocale() === 'en')
+                    <h6 style="color:blue; background-color:white; margin-top:10px;"> <strong class="bg-white">
+                            {{ $introduction->english_title ?? '' }}</strong></h6>
+                    <p style="">
+                        <span style="background-color: white;">
+                            {!! Str::words($introduction->english_description ?? '', 150, '..') !!}
+                        </span>
+                    </p>
+                @elseif (App::getLocale() === 'ne')
+                    <h6 style="color:blue; background-color:white; margin-top:10px;"> <strong class="bg-white">
+                            {{ $introduction->title ?? '' }}</strong></h6>
+                    <p style="">
+                        <span style="background-color: white;">
+                            {!! Str::words($introduction->description ?? '', 150, '..') !!}
+                        </span>
+                    </p>
+                @endif
+
 
                 <br>
                 <a class="pb-5" style="text-decoration: none; padding-bottom:10px;"
                     href="{{ route('officeDetail', App\Enums\OfficeDetailTypeEnum::INTRODUCTION, 'introduction') }}">
-                    थप हेर्नुहोस
+                    {{ __('Read More') }}
                 </a>
             </div>
             <div class="col-md-4 poster">
@@ -133,7 +168,7 @@
 
                 <div class="bar mt-2">
                     <i class="fa fa-info-circle m-2 " aria-hidden="true"></i>
-                    <strong> कानूनी दस्तावेज</strong>
+                    <strong> {{ __('Legal documents') }}</strong>
                     <h6 class="content_title mt-4"><span class="pull-right"></span></h6>
                 </div>
 
@@ -143,8 +178,13 @@
                             <button class="nav-link {{ $loop->first ? 'active' : '' }}"
                                 id="home{{ $loop->iteration }}-tab" data-bs-toggle="tab"
                                 data-bs-target="#home{{ $loop->iteration }}" type="button" role="tab"
-                                aria-controls="home{{ $loop->iteration }}"
-                                aria-selected="true">{{ $documentCategorie->title }}</button>
+                                aria-controls="home{{ $loop->iteration }}" aria-selected="true">
+                                @if (App::getLocale() === 'en')
+                                    {{ $documentCategorie->english_title }}
+                                @elseif (App::getLocale() === 'ne')
+                                    {{ $documentCategorie->title }}
+                                @endif
+                            </button>
                         </li>
                     @endforeach
                 </ul>
@@ -158,9 +198,9 @@
                                 <thead>
                                     <tr>
                                         <th scope="col"></th>
-                                        <th scope="col">शीर्षक</th>
-                                        <th scope="col">प्रकाशित मिति</th>
-                                        <th scope="col"> डाउनलोड</th>
+                                        <th scope="col">{{ __('Title') }}</th>
+                                        <th scope="col">{{ __('Publish Date') }}</th>
+                                        <th scope="col"> {{ __('Download') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -169,7 +209,14 @@
                                             <th scope="row"><img style="height:30px; width:50px; margin-left:20px;"
                                                     src="{{ asset('frontend/assets/img/image.png') }}" alt="">
                                             </th>
-                                            <td>{{ $documentList->title ?? '' }}</td>
+                                            <td>
+                                                @if (App::getLocale() === 'en')
+                                                    {{ $documentList->english_title ?? '' }}
+                                                @elseif (App::getLocale() === 'ne')
+                                                    {{ $documentList->title ?? '' }}
+                                                @endif
+
+                                            </td>
                                             <td> {{ $documentList->publish_date ?? '' }}</td>
                                             <td><a href="{{ route('documentDetail', $documentList) }}"><i
                                                         class="fa fa-eye btn btn-primary btn-xs"></i></a></td>
@@ -179,8 +226,8 @@
 
                             </table>
                             <div class="pb-2 m-2">
-                                <a href="{{ route('documentCategory', $documentCategory) }}" class="btn btn-danger"> थप
-                                    हेर्नुहोस</a>
+                                <a href="{{ route('documentCategory', $documentCategory) }}"
+                                    class="btn btn-danger">{{ __('Read More') }} </a>
                             </div>
 
                         </div>
@@ -190,7 +237,7 @@
 
                 <div class="bar mt-2" style="height:50px; ">
                     <i class="fa fa-info-circle m-2" aria-hidden="true"></i>
-                    <strong> सूचना/समाचार</strong>
+                    <strong> {{ __('News/Notice') }}</strong>
                     <h6 class="content_title"><span class="pull-right"></span></h6>
                 </div>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -199,8 +246,13 @@
                             <button class="nav-link {{ $loop->first ? 'active' : '' }}"
                                 id="news{{ $loop->iteration }}-tab" data-bs-toggle="tab"
                                 data-bs-target="#news{{ $loop->iteration }}" type="button" role="tab"
-                                aria-controls="news{{ $loop->iteration }}"
-                                aria-selected="true">{{ $newsCategory->title }}</button>
+                                aria-controls="news{{ $loop->iteration }}" aria-selected="true">
+                                @if (App::getLocale() === 'en')
+                                    {{ $newsCategory->english_title }}
+                                @elseif (App::getLocale() === 'ne')
+                                    {{ $newsCategory->title }}
+                                @endif
+                            </button>
                         </li>
                     @endforeach
                 </ul>
@@ -213,9 +265,9 @@
                                 <thead>
                                     <tr>
                                         <th scope="col"></th>
-                                        <th scope="col">शीर्षक</th>
-                                        <th scope="col">प्रकाशित मिति</th>
-                                        <th scope="col"> डाउनलोड</th>
+                                        <th scope="col">{{ __('Title') }}</th>
+                                        <th scope="col">{{ __('Publish Date') }}</th>
+                                        <th scope="col"> {{ __('Download') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -224,7 +276,13 @@
                                             <th scope="row"><img style="height:30px; width:50px; margin-left:20px;"
                                                     src="{{ asset('frontend/assets/img/image.png') }}" alt="">
                                             </th>
-                                            <td>{{ $newsList->title ?? '' }}</td>
+                                            <td>
+                                                @if (App::getLocale() === 'en')
+                                                    {{ $newsList->english_title ?? '' }}
+                                                @elseif (App::getLocale() === 'ne')
+                                                    {{ $newsList->title ?? '' }}
+                                                @endif
+                                            </td>
                                             <td> {{ $newsList->publish_date ?? '' }}</td>
                                             <td><a href="{{ route('newsDetail', $newsList) }}"><i
                                                         class="fa fa-eye btn btn-primary btn-xs"></i></a></td>
@@ -233,8 +291,8 @@
                                 </tbody>
                             </table>
                             <div class="pb-2 m-2">
-                                <a href="{{ route('newsCategory', $newsCategory) }}" class="btn btn-danger"> थप
-                                    हेर्नुहोस</a>
+                                <a href="{{ route('newsCategory', $newsCategory) }}"
+                                    class="btn btn-danger">{{ __('Read More') }}</a>
                             </div>
                         </div>
                     @endforeach
@@ -243,7 +301,7 @@
 
                 <div class="bar mt-2" style="height:50px; ">
                     <i class="fa fa-info-circle m-2" aria-hidden="true"></i>
-                    <strong> किसान सूचना केन्द्र </strong>
+                    <strong> {{ __('Farmer Information Centre') }} </strong>
                     <h6 class="content_title"><span class="pull-right"></span></h6>
                 </div>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -252,8 +310,13 @@
                             <button class="nav-link {{ $loop->first ? 'active' : '' }}"
                                 id="farmer{{ $loop->iteration }}-tab" data-bs-toggle="tab"
                                 data-bs-target="#farmer{{ $loop->iteration }}" type="button" role="tab"
-                                aria-controls="farmer{{ $loop->iteration }}"
-                                aria-selected="true">{{ $farmerCategory->title }}</button>
+                                aria-controls="farmer{{ $loop->iteration }}" aria-selected="true">
+                                @if (App::getLocale() === 'en')
+                                    {{ $farmerCategory->english_title }}
+                                @elseif (App::getLocale() === 'ne')
+                                    {{ $farmerCategory->title }}
+                                @endif
+                            </button>
                         </li>
                     @endforeach
                 </ul>
@@ -266,9 +329,9 @@
                                 <thead>
                                     <tr>
                                         <th scope="col"></th>
-                                        <th scope="col">शीर्षक</th>
-                                        <th scope="col">प्रकाशित मिति</th>
-                                        <th scope="col"> डाउनलोड</th>
+                                        <th scope="col">{{ __('Title') }}</th>
+                                        <th scope="col">{{ __('Publish Date') }}</th>
+                                        <th scope="col"> {{ __('Download') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -277,18 +340,23 @@
                                             <th scope="row"><img style="height:30px; width:50px; margin-left:20px;"
                                                     src="{{ asset('frontend/assets/img/image.png') }}" alt="">
                                             </th>
-                                            <td>{{ $farmerList->title ?? '' }}</td>
+                                            <td>
+                                                @if (App::getLocale() === 'en')
+                                                    {{ $farmerList->english_title ?? '' }}
+                                                @elseif (App::getLocale() === 'ne')
+                                                    {{ $farmerList->title ?? '' }}
+                                                @endif
+                                            </td>
                                             <td> {{ $farmerList->publish_date ?? '' }}</td>
                                             <td><a href="{{ route('farmerDetail', $farmerList) }}"><i
                                                         class="fa fa-eye btn btn-primary btn-xs"></i></a></td>
                                         </tr>
                                     @endforeach
-                                    
+
                                 </tbody>
                             </table>
                             <div class="pb-2 m-2">
-                                <a href="{{ route('farmerCategory', $farmerCategory) }}" class="btn btn-danger"> थप
-                                    हेर्नुहोस</a>
+                                <a href="{{ route('farmerCategory', $farmerCategory) }}" class="btn btn-danger">{{ __("Read More") }}</a>
                             </div>
                         </div>
                     @endforeach
@@ -364,7 +432,7 @@
                         </div>
                     </a>
                 </div>
-               
+
             </div>
         </div>
     </section>
@@ -380,9 +448,8 @@
     </section>
     <section class="container-fluid">
         <div class="wrapper mt-5 mb-3">
-           
+
         </div>
 
     </section>
-    
 @endsection

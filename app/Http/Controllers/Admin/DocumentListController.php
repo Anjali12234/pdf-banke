@@ -40,7 +40,7 @@ class DocumentListController extends Controller
                 ]);
             }
         });
-        toast('Document List are added Successfully', 'success');
+        toast( __('Document List are added Successfully'), 'success');
         return redirect(route('admin.documentList.index'));
     }
 
@@ -72,7 +72,7 @@ class DocumentListController extends Controller
                 }
             }
             $documentList->update($request->validated());
-            toast('DocumentList updated successfully', 'success');
+            toast( __('Document List updated successfully'), 'success');
             return redirect(route('admin.documentList.index'));
         }
     }
@@ -84,7 +84,7 @@ class DocumentListController extends Controller
             $this->deleteFile($file->file);
         }
         $documentList->delete();
-        toast('DocumentList deleted successfully', 'success');
+        toast( __('Document List deleted successfully'), 'success');
         return back();
     }
 
@@ -93,7 +93,7 @@ class DocumentListController extends Controller
         $documentList->update([
             'status' => !$documentList->status
         ]);
-        toast('Status updated successfully', 'success');
+        toast( __('Status updated successfully'), 'success');
         return back();
     }
 }

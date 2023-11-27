@@ -11,13 +11,11 @@ body {
 
 .extra-button {
     list-style-type: none;
-    background-color: white;
     justify-content: space-between;
     align-items: center;
 }
 
 .buttons-right {
-    background-color: white;
     display: inline-flex;
     float: right;
     margin-top: 0px;
@@ -41,11 +39,10 @@ element.style {
     width: 120px;
 }
 
-.title p {
+/* .title p {
     background-color: white;
     color: red;
-    /* text-align: center; */
-}
+} */
 
 .margin {
     margin: 0;
@@ -110,7 +107,6 @@ img {
 .officer-detail p {
     color: black;
     margin: 0px;
-    background-color: white;
 }
 
 .block-information {

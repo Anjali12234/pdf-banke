@@ -37,7 +37,8 @@
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <label for="office_english_name">कार्यालयको नाम * English</label>
-                                    <input class="form-control" id="office_english_name" type="text" name="office_english_name"
+                                    <input class="form-control" id="office_english_name" type="text"
+                                        name="office_english_name"
                                         value="{{ old('office_english_name', $officeSetting->office_english_name ?? '') }}">
                                     <span class="text-warning">
                                         @error('office_english_name')
@@ -59,7 +60,8 @@
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <label for="office_english_address">कार्यालय ठेगाना *English</label>
-                                    <input class="form-control" type="text" id="office_english_address" name="office_english_address"
+                                    <input class="form-control" type="text" id="office_english_address"
+                                        name="office_english_address"
                                         value="{{ old('office_english_address', $officeSetting->office_english_address ?? '') }}">
                                     <span class="text-warning">
                                         @error('office_english_address')
@@ -184,7 +186,8 @@
                             </div>
                             <div class="col-sm-12 form-group">
                                 <label for="map">Map Url</label>
-                                <input class="form-control" type="url" id="map" value="{{ old('map_url', $officeSetting->map_url ?? '') }}" name="map_url"
+                                <input class="form-control" type="url" id="map"
+                                    value="{{ old('map_url', $officeSetting->map_url ?? '') }}" name="map_url"
                                     placeholder="">
                                 <span class="text-warning">
                                     @error('map_url')
@@ -221,13 +224,16 @@
                             </div>
                         </form>
                     </div>
+                    
+                    {{-- office Header --}}
 
                     <div class="ibox-body">
 
-                       
-                       @livewire("office-header-livewire")
+                        @livewire('office-header-livewire')
+
                     </div>
                 </div>
+
                 <div class="page-content fade-in-up">
                     <div class="row">
                         <div class="col-xl-12">
@@ -272,13 +278,13 @@
                                                         </form>
                                                     </td>
                                                 </tr>
-                                                @empty
+                                            @empty
                                                 <tr>
                                                     <td colspan="5" class="">
                                                         <center> No data found.</center>
                                                     </td>
                                                 </tr>
-                                            @endforelse 
+                                            @endforelse
                                         </tbody>
                                     </table>
                                     {{ $officeHeaders->links() }}
@@ -291,6 +297,6 @@
             </div>
         </div>
 
-    @push('script')
-    @endpush
-@endsection
+        @push('script')
+        @endpush
+    @endsection

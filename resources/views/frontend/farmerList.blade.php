@@ -20,7 +20,7 @@
                         <tr class=" bg-white">
                             <th class=" bg-white" scope="col">क्र.सं</th>
                             <th class=" bg-white" scope="col">शीर्षक</th>
-                            <th class=" bg-white" scope="col">समूह</th>
+                            <th class=" bg-white" scope="col">{{ __('Category') }}</th>
                             <th class=" bg-white" scope="col">प्रकाशित मिति</th>
                             <th class=" bg-white" scope="col">प्रकाशक</th>
                             <th class=" bg-white" scope="col"> </th>
@@ -30,15 +30,21 @@
                         @foreach ($farmerCategory->farmerLists as $key => $farmerList)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{ $farmerList->title??'' }}</td>
-                                <td> {{ $farmerCategory->title??'' }}</td>
-                                <td> {{ $farmerList->publish_date??'' }}</td>
+
+                                @if (App::getLocale() === 'en')
+                                    <td>{{ $farmerList->english_title ?? '' }}</td>
+                                @elseif (App::getLocale() === 'ne')
+                                    <td>{{ $farmerList->title ?? '' }}</td>
+                                @endif
+                                <td> {{ $farmerCategory->title ?? '' }}</td>
+                                <td> {{ $farmerList->publish_date ?? '' }}</td>
                                 <td> PDF</td>
-                                <td><a href="{{ route('farmerDetail', $farmerList) }}"><i class="fa fa-eye btn btn-primary btn-xs">
+                                <td><a href="{{ route('farmerDetail', $farmerList) }}"><i
+                                            class="fa fa-eye btn btn-primary btn-xs">
                                             विवरण हेर्नुहोस्</i> </a>
                                 </td>
                             </tr>
-                        @endforeach
+                        @endforeach 
 
 
                     </tbody>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width initial-scale=1.0">
-    <title>कुखुरा बिकास फार्म</title>
+    <title>{{ __("Poultry Development Farm") }}</title>
 
 
     <link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -32,13 +32,13 @@
     <script src="{{ asset('assets/vendors/jquery/dist/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendors/metisMenu/dist/metisMenu.min.js') }}" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-
-
     <script src="{{ asset('assets/js/app.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendors/summernote/dist/summernote.min.js') }}" type="text/javascript"></script>
-
-
-
+    
+    
+    <script src="{{ asset('assets/vendors/popper.js/dist/umd/popper.min.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/bootstrap/dist/js/bootstrap.min.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/jquery-slimscroll/jquery.slimscroll.min.js')}}" type="text/javascript"></script>
 
     @stack('script')
     @livewireScripts

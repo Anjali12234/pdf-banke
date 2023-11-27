@@ -18,7 +18,7 @@ class StoreDownloadListRequest extends FormRequest
         return [
             'title' => ['required'],
             'english_title' => ['nullable'],
-            'slug' => ['required', 'alpha_dash', Rule::unique('document_lists', 'slug')],
+            'slug' => ['required', 'alpha_dash', Rule::unique('download_lists', 'slug')],
             'files' => ['required', 'array'],
             'files.*' => ['mimes:png,jpg,jpeg,pdf,jfif'],
             'download_category_id' => ['required'],

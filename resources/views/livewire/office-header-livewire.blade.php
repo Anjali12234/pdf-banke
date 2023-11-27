@@ -12,8 +12,8 @@
     @endif
     <form wire:submit.prevent="save">
         @foreach ($officeHeaders as $index => $officeHeader)
-            <div class="row">
-                <div class="col-md-6">
+            <div class="row" wire:key="office-header-{{ $index }}">
+                <div class="col-md-3 mt-2">
                     <label for="title">नाम*</label>
                     <input type="text" class="form-control" name="officeHeaders[{{ $index }}][title]"
                         wire:model="officeHeaders.{{ $index }}.title">
@@ -21,7 +21,7 @@
                         <span class="font-medium text-sm text-danger"> {{ $message }}</span>
                     @enderror
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3 mt-2">
                     <label for="english_title">English*</label>
                     <input type="text" class="form-control" name="officeHeaders[{{ $index }}][english_title]"
                         wire:model="officeHeaders.{{ $index }}.english_title">
@@ -29,9 +29,7 @@
                         <span class="font-medium text-sm text-danger"> {{ $message }}</span>
                     @enderror
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-3 mt-2">
                     <label for="font_size">Font Size</label>
                     <input type="number" class="form-control" name="officeHeaders[{{ $index }}][font_size]"
                         wire:model="officeHeaders.{{ $index }}.font_size">
@@ -39,7 +37,7 @@
                         <span class="font-medium text-sm text-danger"> {{ $message }}</span>
                     @enderror
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3 mt-2">
                     <label for="font-color">Font Color</label>
                     <input type="color" class="form-control" name="officeHeaders[{{ $index }}][font_color]"
                         wire:model="officeHeaders.{{ $index }}.font_color">
@@ -47,9 +45,7 @@
                         <span class="font-medium text-sm text-danger"> {{ $message }}</span>
                     @enderror
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3 mt-2">
                     <label for="font-family">Font Family</label>
                     <select class="form-control" name="officeHeaders[{{ $index }}][font_family]"
                         wire:model="officeHeaders.{{ $index }}.font_family">
@@ -61,7 +57,7 @@
                         <span class="font-medium text-sm text-danger"> {{ $message }}</span>
                     @enderror
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3 mt-2">
                     <label for="title">Position</label>
                     <input type="number" class="form-control" name="officeHeaders[{{ $index }}][position]"
                         wire:model="officeHeaders.{{ $index }}.position">
@@ -69,7 +65,7 @@
                         <span class="font-medium text-sm text-danger"> {{ $message }}</span>
                     @enderror
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3 mt-2">
                     <button class="btn btn-danger mt-4 text-white rounded" style="width: 60px; height:40px;"
                         type="button" wire:click.prevent="removeOfficeHeader({{ $index }})">-</button>
 
@@ -79,5 +75,4 @@
         <button class="btn btn-success mt-4" type="submit">save</button>
 
     </form>
-    {{-- {{ var_dump($officeHeaders) }} --}}
 </div>

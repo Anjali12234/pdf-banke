@@ -2,18 +2,11 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FrontendController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 
-Route::view('ourIntro', 'frontend.introduction');
-Route::view('purpose', 'frontend.purpose');
-Route::view('infoNotice', 'frontend.information-notice');
-Route::view('responsibiltyCenter', 'frontend.center-responsibilty');
-Route::view('workDesc', 'frontend.work-description');
-Route::view('staffVacancy', 'frontend.staff-vacancies');
-Route::view('citizenCharacter', 'frontend.citizen-character');
-Route::view('videoGallery', 'frontend.video-gallery');
-Route::view('photoTraining', 'frontend.training-conducted');
+
 
 // Auth 
 Route::get('login', [AuthController::class, 'loginPage'])->name('loginPage');
@@ -38,5 +31,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('link','link')->name('link');
     Route::get('faq','faq')->name('faq');
     Route::get('office-detail/{officeDetail:type}','officeDetail')->name('officeDetail');
+ 
+   
 });
         

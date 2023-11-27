@@ -14,13 +14,13 @@ class ContactMessageController extends Controller
         $contactMessages = ContactMessage::latest()->paginate(10);
         return view('admin.contactMessage.index',compact('contactMessages'));
     }
-   
+
     public function store(StoreContactMessageRequest $request)
     {
         ContactMessage::create($request->validated());
-        toast('Your Message has been sent','success');
+        toast( __('Your Message has been sent'),'success');
         return back();
     }
 
-    
+
 }

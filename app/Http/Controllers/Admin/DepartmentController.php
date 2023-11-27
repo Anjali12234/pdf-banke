@@ -21,7 +21,7 @@ class DepartmentController extends Controller
     public function store(StoreDepartmentRequest $request)
     {
         Department::create($request->validated());
-        toast('Department added successfully','success');
+        toast( __('Department added successfully'),'success');
         return redirect(route('admin.department.index'));
     }
 
@@ -35,7 +35,7 @@ class DepartmentController extends Controller
     public function update( UpdateDepartmentRequest $request, Department $department )
     {
         $department->update($request->validated());
-        toast('Department updated successfully','success');
+        toast( __('Department updated successfully'),'success');
         return redirect(route('admin.department.index'));
     }
 
@@ -43,7 +43,7 @@ class DepartmentController extends Controller
     public function destroy(Department $department)
     {
         $department->delete();
-        toast('Department deleted successfully','success');
+        toast( __('Department deleted successfully'),'success');
         return back();
     }
 }

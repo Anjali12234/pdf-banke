@@ -11,36 +11,56 @@
                     </iframe>
                 </span>
             </div>
-            <div class="col-md-6 bg-white ">
-                <div class="butttons bg-white p-2">
+            <div class="col-md-6 ">
+                <div class="butttons p-2">
                     <ul class="extra-button">
-                        <li class="buttons-right"> <a href="{{ route('login') }}"> <button>Login</button></li></a>
-                        <li class="buttons-right"> <button class="btn-success">Nepali</button></li>
-                        <li class="buttons-right"> <button>English</button></li>
+                        <li class="buttons-right">
+                            <a href="{{ route('login') }}">
+                                <button>{{ __('Login') }}</button>
+                            </a>
+                        </li>
+                        <li class="buttons-right">
+                            <a href="{{ url()->current() }}?change_language=ne">
+                                <button
+                                    class="{{ app()->getLocale() === 'ne' ? 'btn-success' : '' }}">{{ __('Nepali') }}</button>
+                            </a>
+                        </li>
+                        <li class="buttons-right">
+                            <a href="{{ url()->current() }}?change_language=en">
+                                <button
+                                    class="{{ app()->getLocale() === 'en' ? 'btn-success' : '' }}">{{ __('English') }}</button>
+                            </a>
+                        </li>
                     </ul>
                 </div>
+
             </div>
             <hr>
-            <div class="sub-header bg-white" >
-                <div class="row bg-white py-3" style="background-image: {{ asset('frontend/assets/img/bg.png') }}">
-                    <div class="col-md-4 bg-white">
-                        <div class="logo bg-white">
-                            <img class="bg-white" src="{{ officeSetting()->office_logo ?? '' }}" alt="">
+            <div class="sub-header ">
+                <div class="row py-3" style="background-image: {{ asset('frontend/assets/img/bg.png') }}">
+                    <div class="col-md-4 ">
+                        <div class="logo ">
+                            <img src="{{ officeSetting()->office_logo ?? '' }}" alt="">
                         </div>
                     </div>
-                    <div class="col-md-4 bg-white">
+                    <div class="col-md-4">
                         <div class="title mb-3">
                             @foreach (officeHeaders() as $officeHeader)
-                                
-                            <p class="margin text-center">{{ $officeHeader->title??'' }}</p>
+                                <p class="margin text-center"
+                                    style=" font-size: {{ $officeHeader->font_size }}px;
+                                    color: {{ $officeHeader->font_color }};
+                                    font-family: {{ $officeHeader->font_family }};">
+                                    @if (App::getLocale() === 'en')
+                                        {{ $officeHeader->english_title ?? '' }}
+                                    @elseif (App::getLocale() === 'ne')
+                                        {{ $officeHeader->title ?? '' }}
+                                    @endif
+                                </p>
                             @endforeach
-                          
-                            <p class="margin text-center"><strong class=" bg-white"> {{ officeSetting()->office_name??'' }}</strong></p>
-                            <p class="margin text-center"> {{ officeSetting()->office_address??'' }} </p>
                         </div>
                     </div>
-                    <div class="col-md-4 bg-white ">
-                        <div class="flag bg-white">
+                    <div class="col-md-4">
+                        <div class="flag">
                             <a href="">
                                 <img class="bg-white" src="{{ officeSetting()->flag ?? '' }}" alt="">
                             </a>

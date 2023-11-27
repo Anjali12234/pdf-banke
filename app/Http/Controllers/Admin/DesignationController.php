@@ -20,7 +20,7 @@ class DesignationController extends Controller
     public function store(StoreDesignationRequest $request)
     {
         Designation::create($request->validated());
-        toast('Designation added successfully','success');
+        toast( __('Designation added successfully'),'success');
         return redirect(route('admin.designation.index'));
     }
 
@@ -33,7 +33,7 @@ class DesignationController extends Controller
     public function update( UpdateDesignationRequest $request, Designation $designation )
     {
         $designation->update($request->validated());
-        toast('Designation updated successfully','success');
+        toast( __('Designation updated successfully'),'success');
         return redirect(route('admin.designation.index'));
     }
 
@@ -41,7 +41,7 @@ class DesignationController extends Controller
     public function destroy(Designation $designation)
     {
         $designation->delete();
-        toast('Designation deleted successfully','success');
+        toast( __('Designation deleted successfully'),'success');
         return back();
     }
 }

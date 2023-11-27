@@ -83,7 +83,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ne',
 
     /*
     |--------------------------------------------------------------------------
@@ -169,7 +169,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\FooterServiceProvider::class,
-
+        Illuminate\Translation\TranslationServiceProvider::class,
+        Illuminate\Validation\ValidationServiceProvider::class,
+        Illuminate\View\ViewServiceProvider::class,
+        
     ])->toArray(),
 
     /*
@@ -187,4 +190,8 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    'languages' => [
+        'en' => 'English',
+        'ne' => 'Nepali',
+    ],
 ];
