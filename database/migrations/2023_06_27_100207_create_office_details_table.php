@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    
+
     public function up(): void
     {
         Schema::create('office_details', function (Blueprint $table) {
@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('type')->nullable();
             $table->string('english_title');
             $table->string('slug');
-            $table->integer('position');
+            $table->integer('position')->nulable();
             $table->longText('description')->nullable();
             $table->longText('english_description')->nullable();
             $table->boolean('status')->default(true);
@@ -24,7 +24,7 @@ return new class extends Migration
         });
     }
 
-   
+
     public function down(): void
     {
         Schema::dropIfExists('office_details');

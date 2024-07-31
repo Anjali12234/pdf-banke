@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-// Auth 
+// Auth
 Route::get('login', [AuthController::class, 'loginPage'])->name('loginPage');
 Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
@@ -31,7 +31,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('link','link')->name('link');
     Route::get('faq','faq')->name('faq');
     Route::get('office-detail/{officeDetail:type}','officeDetail')->name('officeDetail');
- 
-   
+
+
 });
-        
+

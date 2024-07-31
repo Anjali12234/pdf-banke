@@ -106,7 +106,7 @@
                         <li>
                             <a href="{{ route('admin.photo.index') }}">{{ __("Photo Gallery") }}</a>
                         </li>
-                     
+
                     </ul>
                 </li>
 

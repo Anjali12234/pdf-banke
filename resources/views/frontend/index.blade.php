@@ -9,7 +9,8 @@
             <div class="col-md-3 information-detail">
 
                 <h5 class="headings"> <strong> {{ __('Farmer Information Centre') }}</strong></h5>
-                @foreach ($farmerCategories1->first()->farmerLists as $farmerList)
+                {{-- @foreach ($farmerCategories1
+                ->first()?->farmerLists as $farmerList)
                     <div class="heading-detail bg-white p-1  mt-2 ">
                         <a class="" href="">
                             <h6 class="px-2 bg-white mt-1  ">
@@ -22,7 +23,7 @@
                             <p class=" my-1 px-2 bg-white">{{ $farmerList->publish_date ?? '' }}| PDF</p>
                         </a>
                     </div>
-                @endforeach
+                @endforeach --}}
 
             </div>
             <div class="col-md-6 mt-3" class="slider">
@@ -423,7 +424,7 @@
                     </a>
                 </div>
                 <div class="blockmenu mt-4 " style="background-color: #004a84; height:50px; width: 486px;">
-                    <a href="{{ route('link') }}" class="d-flex justify-content mt-4"
+                    <a href="" class="d-flex justify-content mt-4"
                         style="text-decoration:none; background-color: #004a84; margin-left: 15px; margin-top:10px;">
                         <span class="block-icon"><i class="fa-brands fa-facebook mt-2"
                                 style="font-size:30px; background-color:#004a84"></i></span>

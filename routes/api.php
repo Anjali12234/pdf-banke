@@ -55,7 +55,7 @@ Route::prefix('legalDocuments')
     ->group(function () {
         Route::apiResource('documentCategory', DocumentCategoryApiController::class);
         Route::apiResource('documentList', DocumentListApiController::class);
-     
+
     });
 
     Route::prefix('downloads')
@@ -64,5 +64,5 @@ Route::prefix('legalDocuments')
         Route::apiResource('downloadCategory', DownloadCategoryApiController::class);
         Route::apiResource('downloadList', ApiDownloadListApiController::class);
 
-     
+
     });

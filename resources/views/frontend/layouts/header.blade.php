@@ -37,7 +37,10 @@
             </div>
             <hr>
             <div class="sub-header ">
-                <div class="row py-3" style="background-image: {{ asset('frontend/assets/img/bg.png') }}">
+                <div class="row py-3" style="background-image: url('{{ asset('frontend/assets/img/bg.png') }}');">
+                    <!-- Your content here -->
+                
+
                     <div class="col-md-4 ">
                         <div class="logo ">
                             <img src="{{ officeSetting()->office_logo ?? '' }}" alt="">

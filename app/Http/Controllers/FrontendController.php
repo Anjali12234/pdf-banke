@@ -11,7 +11,6 @@ use App\Models\Employee;
 use App\Models\Faq;
 use App\Models\FarmerCategory;
 use App\Models\FarmerList;
-use App\Models\Link;
 use App\Models\NewsCategory;
 use App\Models\NewsList;
 use App\Models\OfficeDetail;
@@ -111,11 +110,7 @@ class FrontendController extends Controller
         return view('frontend.contact');
     }
 
-    public function link()
-    {
-        $links = Link::all();
-        return view('frontend.links', compact('links'));
-    }
+
 
     public function faq()
     {
@@ -128,5 +123,5 @@ class FrontendController extends Controller
         return view('frontend.officeDetail', compact('officeDetail'));
     }
 
-   
+
 }

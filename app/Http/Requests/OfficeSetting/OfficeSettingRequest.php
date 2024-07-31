@@ -15,7 +15,7 @@ class OfficeSettingRequest extends FormRequest
         return true;
     }
 
-   
+
     public function rules(): array
     {
         return [
@@ -27,13 +27,13 @@ class OfficeSettingRequest extends FormRequest
             'office_email' => ['required', 'email'],
             'office_cover_photo' => ['nullable', 'mimes:png,jpeg,jpg'],
             'office_logo' => ['nullable','image', 'mimes:png,jpg,jpeg'],
-            'flag' => ['nullable','image', 'mimes:png,jpg,jpeg,gif'],   
+            'flag' => ['nullable','image', 'mimes:png,jpg,jpeg,gif'],
             'office_ad_photo' => ['nullable','image', 'mimes:png,jpg,jpeg'],
-            'office_chief_id' => ['required', Rule::exists('employees', 'id')],
-            'information_officer_id' => ['required', Rule::exists('employees', 'id')],
+            'office_chief_id' => ['nullable', Rule::exists('employees', 'id')],
+            'information_officer_id' => ['nullable', Rule::exists('employees', 'id')],
             'map_url' => ['nullable', 'url'],
             'facebook_url' => ['nullable', 'url'],
             'twiter_url' => ['nullable', 'url'],
-        ];  
+        ];
     }
 }

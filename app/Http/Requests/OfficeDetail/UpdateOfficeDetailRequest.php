@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\OfficeDetail;
 
+use App\Enums\OfficeDetailTypeEnum;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;

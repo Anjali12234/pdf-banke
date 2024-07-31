@@ -7,7 +7,6 @@ use App\Models\Slider;
 use App\Http\Requests\Slider\StoreSliderRequest;
 use App\Http\Requests\Slider\UpdateSliderRequest;
 use App\Http\Resources\SliderResource;
-use App\Models\Link;
 use Illuminate\Http\Request;
 
 class SliderController extends Controller
@@ -29,15 +28,15 @@ class SliderController extends Controller
     {
         return response()->json(['slider'=>$slider]);
     }
-    
- 
+
+
     public function update(UpdateSliderRequest $request, Slider $slider)
     {
         $slider->update($request->all());
         return new SliderResource($slider);
     }
 
-   
+
     public function destroy(Slider $slider)
     {
         $slider->delete();

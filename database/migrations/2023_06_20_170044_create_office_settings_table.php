@@ -25,12 +25,12 @@ return new class extends Migration
             $table->string('office_ad_photo')->nullable();
             $table->foreignId('office_chief_id')->nullable()->constrained('employees')->nullOnDelete();
             $table->foreignId('information_officer_id')->nullable()->constrained('employees')->nullOnDelete();
-            $table->string('map_url')->nullable();
-            $table->string('facebook_url')->nullable();
-            $table->string('twitter_url')->nullable();
+            $table->longText('map_url')->nullable();
+            $table->longText('facebook_url')->nullable();
+            $table->longText('twitter_url')->nullable();
             $table->timestamps();
         });
-        
+
     }
 
     /**

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Link extends Model
 {
     use HasFactory, SoftDeletes;
-    
+
     protected $fillable = [
         'title',
         'english_title',

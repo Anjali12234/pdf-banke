@@ -12,7 +12,8 @@ class FooterServiceProvider extends ServiceProvider
     public function boot(): void
     {
 
-        $footerLinks = Link::latest()->limit(5)->get();
-        View::share('footerLinks', $footerLinks);
+
     }
 }
+  // $footerLinks = Link::latest()->limit(5)->get();
+        // View::share('footerLinks', $footerLinks);
